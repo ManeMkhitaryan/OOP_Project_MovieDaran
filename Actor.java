@@ -1,3 +1,7 @@
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 /**class actor, with its instance variables, constructor initializing each variable, copy constructor, accessors mutators*/
 public class Actor {
     private String firstName;
@@ -8,14 +12,14 @@ public class Actor {
     public Actor(String firstName, String lastName, int age, String aboutActor) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.age = 2021-age;
+        this.age = age;
         this.aboutActor = aboutActor;
     }
     public Actor(Actor that){
         if(that != null){
             this.firstName = that.firstName;
             this.lastName = that.lastName;
-            this.age = 2021-that.age;
+            this.age = that.age;
             this.aboutActor = that.aboutActor;
         }
     }
@@ -47,10 +51,9 @@ public class Actor {
         if(age < 0)
             this.age = 0;
         else
-            this.age = 2021-age;
+            this.age = age;
 
     }
-
 
     public String getAboutActor() {
         return aboutActor;
@@ -59,10 +62,26 @@ public class Actor {
     public void setAboutActor(String aboutActor) {
         this.aboutActor = aboutActor;
     }
+    public void add(){
+        Scanner inputStream = null;
+        Scanner sc = new Scanner(System.in);
+
+        try{
+            inputStream =
+                    new Scanner(new FileInputStream("C:\\Users\\Acer\\Desktop\\OOP Death Project\\Actor.txt"));
+
+        }catch(FileNotFoundException e){
+            System.out.println("File not found");
+            System.exit(0);
+        }
+
+
+        inputStream.close();
+    }
 
     @Override
     public String toString() {
-        return "Actor: " + firstName + " " + lastName + "\nAge: " + age +
-               "\n" + aboutActor;
+        return firstName + " " + lastName + "\n" + age +
+                "\n" + aboutActor;
     }
 }
