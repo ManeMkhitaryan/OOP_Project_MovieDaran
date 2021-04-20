@@ -185,7 +185,7 @@ public class Movie {
     }
 
     // TODO
-    // method which will generate cast based on inputed actors
+    // method which will generate cast based on inputted actors
 /*    public Actor[] cast(Actor actor){
 
         return
@@ -199,10 +199,11 @@ public class Movie {
     @Override
     public String toString() {
         return "<<image>>"+"\n" + "\"" + title + "\"," + " - a " +
-                genre.toString().toLowerCase() +" from " + year + "\n" +
+                genre.toString().toLowerCase() +" from " + year +
                 " by " + director.getFirstname() +
                 director.toString() + "\n" + " duration: "+ duration
-                + "\ncountry: "+country+"\n" + "Cast: " +"\n"+about;  //TODO+ Movie.cast(actors)
+                + "\ncountry: "+country+"\n" + "Cast: " +"\n"+
+                "\nAbout the film: "+ about;  //TODO+ Movie.cast(actors)
 
     }
 

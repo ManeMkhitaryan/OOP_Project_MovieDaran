@@ -62,22 +62,22 @@ public class Actor {
     public void setAboutActor(String aboutActor) {
         this.aboutActor = aboutActor;
     }
-    public void add(){
-        Scanner inputStream = null;
-        Scanner sc = new Scanner(System.in);
-
-        try{
-            inputStream =
-                    new Scanner(new FileInputStream("C:\\Users\\Acer\\Desktop\\OOP Death Project\\Actor.txt"));
-
-        }catch(FileNotFoundException e){
-            System.out.println("File not found");
-            System.exit(0);
-        }
-
-
-        inputStream.close();
-    }
+//    public void add(){
+//        Scanner inputStream = null;
+//        Scanner sc = new Scanner(System.in);
+//
+//        try{
+//            inputStream =
+//                    new Scanner(new FileInputStream("C:\\Users\\Acer\\Desktop\\OOPproject\\Actor.txt"));
+//
+//        }catch(FileNotFoundException e){
+//            System.out.println("File not found");
+//            System.exit(0);
+//        }
+//
+//
+//        inputStream.close();
+//    }
 
     @Override
     public String toString() {
