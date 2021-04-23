@@ -10,7 +10,6 @@ public class Feedback {
     public Feedback() {
         this.numberOfLikes = 0;
         this.numberOfDislikes = 0;
-        this.userName = sc.nextLine();
     }
 
 

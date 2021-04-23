@@ -1,13 +1,23 @@
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import javax.swing.*;
+import java.io.*;
 import java.util.Scanner;
 
 public class MovieDemo {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+
+        JFrame frame = new JFrame();
+        frame.setTitle("MovieDaran");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(false);
+        frame.pack();
+        frame.setSize(1000,1000);
+        frame.setVisible(true);
+
+        //Restful API
         //we should change System.in it will read from txt file
         Scanner scanner = new Scanner(System.in);
         Scanner inputStream = null;
+
 
         Movie[] list = new Movie[0];
 
@@ -23,9 +33,10 @@ public class MovieDemo {
                 System.out.println("Problem opening the file");
                 System.exit(0);
             }
+            Movie movie = new Movie();
 
             String title = inputStream.nextLine();
-            int year = inputStream.nextInt();
+            movie.setYear(inputStream.nextInt());
             String firstName = inputStream.next();
             String lastName = inputStream.next().replace("-"," ");
             String genre = inputStream.next().trim().toLowerCase().replace("_", " ");
@@ -33,6 +44,11 @@ public class MovieDemo {
             String country = inputStream.next();
             inputStream.nextLine();
             String about = inputStream.nextLine();
+
+            list = addMovie(list, title, movie.getYear(), firstName, lastName, genre, duration, country, about);
+            System.out.println();
+
+
 
             String str = scanner.nextLine();
             if (str.toLowerCase().equals("a")){
@@ -47,8 +63,7 @@ public class MovieDemo {
                     Actor
                 }*/
 
-                list = addMovie(list, title, year, firstName, lastName, genre, duration, country, about);
-                System.out.println();
+
 
             }else if (str.equals("l")){
                 if (list.length == 0){
@@ -65,11 +80,13 @@ public class MovieDemo {
 
         }
 
+
+
     }
 
     public static Movie[] addMovie(Movie[] list, String title, int year, String firstName, String lastName, String genre, String duration, String country, /*cast*/ String about){
 
-        Movie m = new Movie(title, year, new Director(firstName, lastName), Movie.Genre.fromString(genre), duration, country, about);
+        Movie m = new Movie(title, year, new Director(firstName, lastName), Movie.Genre.fromString(genre), duration,  country, about);
 
         Movie[] newList = new Movie[list.length + 1];
 

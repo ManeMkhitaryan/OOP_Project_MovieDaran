@@ -52,6 +52,8 @@ public class Movie {
     private Actor actor;
     //private Actor[] cast;
     private String about;
+    public Movie(){}
+
 
 
 
@@ -63,10 +65,10 @@ public class Movie {
      * @param director third instance variable the director of the Movie
      * @param genre forth instance variable the genre of the Movie
      */
-    public Movie(String title, int year, Director director, Genre genre, String duration, String country, /*Actor actor*/ String about) {
+    public Movie(String title, int year, Director director, Genre genre, String duration, String country, /*Actor actor,*/ String about) {
         this.title = title;
         this.year = year;
-        this.director = new Director(director);
+        this.director = director;
         this.genre = genre;
         this.duration = duration;
         this.country = country;
