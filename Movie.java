@@ -7,7 +7,7 @@ public class Movie {
 
 
     public enum Genre {
-        ACTION,ADVENTURE,THRILLER,MARTIAL_ARTS, HORROR,MELODRAMA,COMEDY,DRAMA,HISTORICAL,ROMANCE,DOCUMENTARY,SCIENCE_FICTION, CRIME_FILM;
+        ACTION,ADVENTURE,THRILLER,MARTIAL_ARTS, HORROR,MELODRAMA,COMEDY,DRAMA,HISTORICAL,ROMANCE,DOCUMENTARY,SCIENCE_FICTION, CRIME_FILM, WESTERN;
         public static Genre fromString(String s){
             if (s.equals("comedy")) {
                 return COMEDY;
@@ -31,8 +31,9 @@ public class Movie {
                 return ROMANCE;
             }else if (s.equals("crime film")) {
                 return CRIME_FILM;
-            }
-            else if (s.equals("science_fiction")){
+            }else if (s.equals("western")) {
+                return WESTERN;
+            }else if (s.equals("science_fiction")){
                 return SCIENCE_FICTION;
             } else if (s.equals("documentary")){
                 return DOCUMENTARY;
