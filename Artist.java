@@ -1,14 +1,18 @@
+import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
+
 
 public abstract class Artist {
     private String firstName;
     private String lastName;
     private int birthYear;
+    private int age;
+    private ArrayList<Movie> movies;
 
-    public Artist() {
 
-    }
+//    public Artist() {
+//
+//    }
 
     public abstract void name();
 
@@ -20,20 +24,25 @@ public abstract class Artist {
 
     private int Date(int birthYear) {
         int year=Calendar.getInstance().get(Calendar.YEAR);;
-        int currentYear= year - birthYear;
-        return currentYear;
+        setAge(year - birthYear);
+        return getAge();
 
-    }
+    } // is it possible?
 
-    String getFirstName(){
+    public String getFirstName(){
         return firstName;
     }
-    String getLastName(){
+
+    public String getLastName(){
         return lastName;
     }
-    int birthYear(){
-        return birthYear;
-    }
+
+     public int getBirthYear() {
+        if(birthYear < 0)
+            return 0;
+        else
+            return birthYear;
+    } // is it possible?
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -43,7 +52,18 @@ public abstract class Artist {
         this.lastName = lastName;
     }
 
-    public void setAge(int birthYear) {
-        this.birthYear = birthYear;
+    public void setBirthYear(int birthYear) {
+        if(birthYear < 0)
+            this.birthYear = 0;
+        else
+            this.birthYear = birthYear;
+
+    }
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }

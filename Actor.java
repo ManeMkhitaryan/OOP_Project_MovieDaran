@@ -5,10 +5,7 @@ import java.util.Scanner;
 
 /**class actor, with its instance variables, constructor initializing each variable, copy constructor, accessors mutators*/
 public class Actor extends Artist {
-    private String firstName;
-    private String lastName;
-    private int birthYear;
-    private String aboutActor;
+    private String birthPlace;
     ArrayList<Movie> actor; // [
     //[firstName,lastName,birthYear,about]
     //                      [first,last,birthYear,about,first,last,birthYear,about]
@@ -22,13 +19,9 @@ public class Actor extends Artist {
 
     }
 
-    public Actor(String firstName, String lastName, int birthYear) {
+    public Actor(String firstName, String lastName, int birthYear, String birthPlace) {
         super(firstName, lastName, birthYear);
-    }
-
-    @Override
-    int birthYear() {
-        return super.birthYear();
+        this.birthPlace = birthPlace;
     }
 
     @Override
@@ -36,62 +29,31 @@ public class Actor extends Artist {
         return super.clone();
     }
 
-    public Actor(Artist firstName, String lastName, int birthYear, String aboutActor) {
-        super();
-
-    }
-    public Actor(Actor that){
+/*    public Actor(Actor that){
         if(that != null){
             this.firstName = that.firstName;
             this.lastName = that.lastName;
             this.birthYear = that.birthYear;
-            this.aboutActor = that.aboutActor;
+            this.birthPlace = that.birthPlace;
         }
+    }*/
+
+
+
+
+
+    public String getBirthPlace() {
+        return birthPlace;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public int getBirthYear() {
-        if(birthYear < 0)
-            return 0;
-        else
-            return birthYear;
-    }
-
-    public void setAge(int birthYear) {
-        if(birthYear < 0)
-            this.birthYear = 0;
-        else
-            this.birthYear = birthYear;
-
-    }
-
-    public String getAboutActor() {
-        return aboutActor;
-    }
-
-    public void setAboutActor(String aboutActor) {
-        this.aboutActor = aboutActor;
+    public void setBirthPlace(String birthPlace) {
+        this.birthPlace = birthPlace;
     }
 
 
     @Override
     public String toString() {
-        return firstName + " " + lastName + "\n" + birthYear +
-                "\n" + aboutActor;
+        return getFirstName() + " " + getLastName() + "\n" + "Born: " + getBirthYear()  +" (age " + getAge() +" years)" +
+                " in " + birthPlace;
     }
 }

@@ -2,61 +2,36 @@
  * no changes
  * */
 
-public class Director {
-    private String firstname;
-    private String lastname;
+public class Director extends Artist {
 
 
-    /**
-     *
-     * @param firstname this is first instance variable of Director class which is for Director's first name
-     * @param lastname this is second instance variable of Director class which is for Director's last name
-     */
-    public Director(String firstname, String lastname) {
 
-        this.firstname = firstname;
-        this.lastname = lastname;
+
+    @Override
+    public void name() {
+
+    }
+
+    public Director(String firstName, String lastName, int birthYear, String birthPlace) {
+        super(firstName, lastName, birthYear);
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 
     /**
      *
      * @param that is the copy of Director class, it generates due to copy constructor
      */
-    public Director(Director that) {
-        if (that != null) {
-            this.firstname = that.firstname;
-            this.lastname = that.lastname;
-        }
-    }
-    /**
-     *
-     * @return String firstname of director
-     */
-    public String getFirstname() {
-        return firstname;
-    }
+//    public Director(Director that) {
+//        if (that != null) {
+//            this.firstname = that.firstname;
+//            this.lastname = that.lastname;
+//        }
+//    }
 
-    /**
-     *
-     * @param firstname set firstname by the user
-     */
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    /**
-     * @return String the lastname of the director
-     */
-    public String getLastname() {
-        return lastname;
-    }
-
-    /**
-     * @param lastname  set lastname by the user
-     */
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
 
     /**
      *
@@ -65,6 +40,6 @@ public class Director {
      */
     @Override
     public String toString() {
-        return firstname + " " + lastname;
+        return getFirstName() + " " + getLastName() + "\n" + "Born: " + getBirthYear()  +" (age " + getAge() +" years)";
     }
 }

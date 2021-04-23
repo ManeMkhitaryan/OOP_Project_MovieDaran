@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MovieDemo {
@@ -15,25 +16,53 @@ public class MovieDemo {
 
         //Restful API
         //we should change System.in it will read from txt file
-        Scanner scanner = new Scanner(System.in);
-        Scanner inputStream = null;
+        Scanner scanner = new Scanner(System.in); // Scanner.out
+        Scanner  inputStream = null;
 
 
-        Movie[] list = new Movie[0];
+        //actor addActor
+        ArrayList<Actor> actors = new ArrayList<Actor>();
+
+        while (!inputStream.hasNextLine()){
+            try{
+                inputStream = new Scanner(new FileInputStream
+                        ("C:\\Users\\Kamo\\Desktop\\AUA student\\Freshman Spring 2021\\OOP\\MovieDaran\\src\\Actor.txt"));
+            }catch(FileNotFoundException e){
+                System.out.println("Problem opening the file");
+                System.exit(0);
+            }
 
 
+
+            for ()
+            String firstName = inputStream.next();
+            String lastName = inputStream.next().replace("-"," ");
+            int birthYear = inputStream.nextInt();
+            String birthPlace = inputStream.nextLine();
+            inputStream.nextLine() == "";
+
+           //TODO implementation
+        }
+        //director adddirector
+        ArrayList<Director> directors = new ArrayList<Director>();
+
+// Call("Actor.txt");  Call("Director.txt");
+
+
+        Movie[] list = new Movie[0]; //here we create Movie empty list will change then ArrayList
 
         while(true) {
             //new code
             System.out.println("Enter 'a' for adding movie, 'l' to see the list, 'e' to exit");
             try{
-                inputStream =
-                        new Scanner(new FileInputStream("C:\\Users\\Acer\\Desktop\\OOPproject\\movielist.txt"));
+                inputStream = new Scanner(new FileInputStream
+                                ("C:\\Users\\Kamo\\Desktop\\AUA student\\Freshman Spring 2021\\OOP\\MovieDaran\\src\\movielist.txt"));
             }catch(FileNotFoundException e){
                 System.out.println("Problem opening the file");
                 System.exit(0);
             }
             Movie movie = new Movie();
+
 
             String title = inputStream.nextLine();
             movie.setYear(inputStream.nextInt());
@@ -76,15 +105,19 @@ public class MovieDemo {
                 System.out.println();
             }else if (str.toLowerCase().equals("e")){
                 System.exit(0);
+
             }
 
         }
 
 
 
+
+
     }
 
-    public static Movie[] addMovie(Movie[] list, String title, int year, String firstName, String lastName, String genre, String duration, String country, /*cast*/ String about){
+    public static Movie[] addMovie(Movie[] list, String title, int year, String firstName,
+                                   String lastName, String genre, String duration, String country, /*cast*/ String about){
 
         Movie m = new Movie(title, year, new Director(firstName, lastName), Movie.Genre.fromString(genre), duration,  country, about);
 
@@ -97,6 +130,30 @@ public class MovieDemo {
         newList[list.length] = m;
 
         return  newList;
+    }
+
+    public static ArrayList<Actor> addActor(ArrayList<Actor> actors, String firstName, String lastName, int birthYear, String birthPlace/*Movies*/){
+        Actor a = new Actor(firstName,lastName, birthYear, birthPlace);
+        ArrayList<Actor> new_actors = new ArrayList<Actor>(actors.size()+1);
+        for(int i = 0; i < actors.size(); i++){
+            new_actors.get(i) = actors.get(i);
+        }
+
+        new_actors.set(actors.size(), a);
+
+        return new_actors;
+    }
+
+    public static ArrayList<Director> addDirector(ArrayList<Director> directors, String firstName, String lastName, int birthYear, String birthPlace/*Movies*/){
+        Director d = new Director(firstName,lastName, birthYear, birthPlace);
+        ArrayList<Director> new_directors = new ArrayList<Director>(directors.size()+1);
+        for(int i = 0; i < directors.size(); i++){
+            new_directors.get(i) = directors.get(i);
+        }
+
+        new_directors.set(directors.size(), d);
+
+        return new_directors;
     }
 
 }

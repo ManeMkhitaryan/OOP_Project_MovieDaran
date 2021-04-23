@@ -66,14 +66,14 @@ public class Movie {
      * @param director third instance variable the director of the Movie
      * @param genre forth instance variable the genre of the Movie
      */
-    public Movie(String title, int year, Director director, Genre genre, String duration, String country, /*Actor actor,*/ String about) {
+    public Movie(String title, int year, Director director, Genre genre, String duration, String country, Actor actor, String about) {
         this.title = title;
         this.year = year;
         this.director = director;
         this.genre = genre;
         this.duration = duration;
         this.country = country;
-        this.actor = new Actor(actor);
+        this.actor = actor;
         this.about = about;
 
     }
@@ -86,11 +86,11 @@ public class Movie {
         if (otherMovie != null) {
             this.title = otherMovie.title;
             this.year = otherMovie.year;
-            this.director = new Director(otherMovie.director);
+            this.director = otherMovie.director;
             this.genre = otherMovie.genre;
             this.duration = otherMovie.duration;
             this.country = otherMovie.country;
-            this.actor = new Actor(otherMovie.actor);
+            this.actor = otherMovie.actor;
             this.about = otherMovie.about;
 
         }else {
