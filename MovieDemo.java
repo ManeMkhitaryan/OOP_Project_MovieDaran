@@ -34,7 +34,7 @@ public class MovieDemo {
 
 
 
-
+            for ()
             String firstName = inputStream.next();
             String lastName = inputStream.next().replace("-"," ");
             int birthYear = inputStream.nextInt();
@@ -120,12 +120,51 @@ public class MovieDemo {
                 System.exit(0);
 
             }
+            break;
 
         }
 
 
 
+        while(!inputStream.hasNextLine()){
+            try{
+                inputStream = new Scanner(new FileInputStream
+                        ("C:\\Users\\Acer\\Desktop\\OOPproject\\Actor.txt"));
+            }catch(FileNotFoundException e){
+                System.out.println("Problem opening the file");
+                System.exit(0);
+            }
 
+            while (inputStream.nextLine().equals("")) {
+                String firstName = inputStream.next();
+                String lastName = inputStream.next();
+                int birthYear = inputStream.nextInt();
+                inputStream.nextLine();
+                String birthPlace = inputStream.nextLine();
+                actors = addActor(actors,firstName,lastName,birthYear,birthPlace);
+                System.out.println();
+            }
+
+        }
+        while(!inputStream.hasNextLine()){
+            try{
+                inputStream = new Scanner(new FileInputStream
+                        ("C:\\Users\\Acer\\Desktop\\OOPproject\\Director.txt"));
+            }catch(FileNotFoundException e){
+                System.out.println("Problem opening the file");
+                System.exit(0);
+            }
+
+
+            while (inputStream.nextLine().equals("")) {
+                String firstName = inputStream.next();
+                String lastName = inputStream.next();
+                int birthYear = inputStream.nextInt();
+                String birthPlace = inputStream.nextLine();
+                directors = addDirector(directors,firstName,lastName,birthYear,birthPlace);
+                System.out.println();
+            }
+        }
 
     }
 
@@ -152,7 +191,7 @@ public class MovieDemo {
         Actor a = new Actor(firstName,lastName, birthYear, birthPlace);
         ArrayList<Actor> new_actors = new ArrayList<Actor>(actors.size()+1);
         for(int i = 0; i < actors.size(); i++){
-            new_actors.get(i) = actors.get(i);
+            new_actors.add(actors.get(i)); // does it add to the array?
         }
 
         new_actors.set(actors.size(), a);
@@ -177,7 +216,7 @@ public class MovieDemo {
         Director d = new Director(firstName,lastName, birthYear, birthPlace);
         ArrayList<Director> new_directors = new ArrayList<Director>(directors.size()+1);
         for(int i = 0; i < directors.size(); i++){
-            new_directors.get(i) = directors.get(i);
+            new_directors.get(i) = directors.get(i); // new_director.add(directors.get(i));
         }
 
         new_directors.set(directors.size(), d);
