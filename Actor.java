@@ -18,7 +18,7 @@ public class Actor extends Artist {
     public void name() {
 
     }
-
+    @Override
     public Actor(String firstName, String lastName, int birthYear, String birthPlace) {
         super(firstName, lastName, birthYear);
         this.birthPlace = birthPlace;

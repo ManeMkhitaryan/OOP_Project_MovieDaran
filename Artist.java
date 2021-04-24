@@ -10,20 +10,30 @@ public abstract class Artist {
     private ArrayList<Movie> movies;
 
 
+
 //    public Artist() {
 //
 //    }
 
     public abstract void name();
 
-    public Artist(String firstName, String lastName, int birthYear) {
+
+    public Artist(String firstName, String lastName, int birthYear, int age, ArrayList<Movie> movies) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.birthYear = Date(birthYear);
+        this.birthYear = birthYear;
+        this.age = age;
+        this.movies = movies;
+    }
+
+    public Artist(String firstName, String lastName, ArrayList<Movie> movies) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.movies = movies;
     }
 
     private int Date(int birthYear) {
-        int year=Calendar.getInstance().get(Calendar.YEAR);;
+        int year=Calendar.getInstance().get(Calendar.YEAR);
         setAge(year - birthYear);
         return getAge();
 
@@ -42,7 +52,15 @@ public abstract class Artist {
             return 0;
         else
             return birthYear;
-    } // is it possible?
+    }
+
+    public ArrayList<Movie> getMovies() {
+        return movies;
+    }
+
+    public void setMovies(ArrayList<Movie> movies) {
+        this.movies = movies;
+    }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;

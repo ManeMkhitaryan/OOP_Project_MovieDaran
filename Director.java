@@ -4,9 +4,6 @@
 
 public class Director extends Artist {
 
-
-
-
     @Override
     public void name() {
 
