@@ -4,13 +4,20 @@
 
 public class Director extends Artist {
 
+
+
     @Override
     public void name() {
 
     }
 
-    public Director(String firstName, String lastName, int birthYear, String birthPlace) {
+    public Director(String firstName, String lastName) {
+        super(firstName, lastName);
+    }
+
+    public Director(String firstName, String lastName, int birthYear) {
         super(firstName, lastName, birthYear);
+
     }
 
     @Override

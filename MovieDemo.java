@@ -78,9 +78,12 @@ public class MovieDemo {
             String duration = inputStream.next();
             String country = inputStream.next();
             inputStream.nextLine();
-            while (inputStream.nextLine().equals("")){
-                String actor_FN = inputStream.next();
-                String actor_LN = inputStream.next();
+            String line = inputStream.nextLine();
+            while (!line.equals("")){
+                String[] NameSurname = line.split("\\s+");
+                String actor_FN = NameSurname[0];
+                String actor_LN = NameSurname[1];
+                if ()
                 //check if FN lN is equal to Actor i kardacatsi FN and LN add this Movie to that actor Objects Movie lIst if not create
                 // new Actor object with this FN and Ls nad and this movie to its new created Movie list
                 if (actor_FN.equals(/*Actor.txt Fn*/) &&  actor_LN.equals(/*Actor.txt Ln*/)){
@@ -129,7 +132,7 @@ public class MovieDemo {
         while(!inputStream.hasNextLine()){
             try{
                 inputStream = new Scanner(new FileInputStream
-                        ("C:\\Users\\Acer\\Desktop\\OOPproject\\Actor.txt"));
+                        ("C:\\Users\\Kamo\\Desktop\\AUA student\\Freshman Spring 2021\\OOP\\MovieDaran\\src\\Actor.txt"));
             }catch(FileNotFoundException e){
                 System.out.println("Problem opening the file");
                 System.exit(0);
@@ -149,7 +152,7 @@ public class MovieDemo {
         while(!inputStream.hasNextLine()){
             try{
                 inputStream = new Scanner(new FileInputStream
-                        ("C:\\Users\\Acer\\Desktop\\OOPproject\\Director.txt"));
+                        ("C:\\Users\\Kamo\\Desktop\\AUA student\\Freshman Spring 2021\\OOP\\MovieDaran\\src\\Director.txt"));
             }catch(FileNotFoundException e){
                 System.out.println("Problem opening the file");
                 System.exit(0);
@@ -212,8 +215,8 @@ public class MovieDemo {
     }*/  // how we will add actors in Movies which not exist in Actor.txt
 
 
-    public static ArrayList<Director> addDirector(ArrayList<Director> directors, String firstName, String lastName, int birthYear, String birthPlace/*Movies*/){
-        Director d = new Director(firstName,lastName, birthYear, birthPlace);
+    public static ArrayList<Director> addDirector(ArrayList<Director> directors, String firstName, String lastName, int birthYear, ){
+        Director d = new Director(firstName,lastName, birthYear);
         ArrayList<Director> new_directors = new ArrayList<Director>(directors.size()+1);
         for(int i = 0; i < directors.size(); i++){
             new_directors.get(i) = directors.get(i); // new_director.add(directors.get(i));

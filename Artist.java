@@ -9,6 +9,10 @@ public abstract class Artist {
     private int age;
     private ArrayList<Movie> movies;
 
+    public Artist(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
 
 //    public Artist() {
@@ -25,6 +29,8 @@ public abstract class Artist {
         this.age = age;
         this.movies = movies;
     }
+
+
 
     public Artist(String firstName, String lastName, ArrayList<Movie> movies) {
         this.firstName = firstName;

@@ -50,8 +50,8 @@ public class Movie {
     private Genre genre;
     private String duration;
     private String country;
-    private Actor actor;
-    //private Actor[] cast;
+    //private Actor actor;
+    private Actor[] cast;//ArrayList
     private String about;
     public Movie(){}
 
