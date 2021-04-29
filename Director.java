@@ -1,34 +1,24 @@
+import java.util.ArrayList;
+
 /**
  * no changes
  * */
 
 public class Director extends Artist {
-
-
-
-    @Override
-    public void name() {
-
+    protected ArrayList<Director> directors;
+    public Director(String firstName, String lastName, ArrayList<Movie> movies) {
+        super(firstName, lastName, movies);
     }
 
-    public Director(String firstName, String lastName) {
-        super(firstName, lastName);
+    public Director() {
+    super();
     }
 
-    public Director(String firstName, String lastName, int birthYear) {
-        super(firstName, lastName, birthYear);
-
-    }
-
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
+/*    protected Object clone() throws CloneNotSupportedException {
         return super.clone();
-    }
+    }*/
 
-    /**
-     *
-     * @param that is the copy of Director class, it generates due to copy constructor
-     */
+
 //    public Director(Director that) {
 //        if (that != null) {
 //            this.firstname = that.firstname;
@@ -36,6 +26,9 @@ public class Director extends Artist {
 //        }
 //    }
 
+    public String toStringInMovie(){
+        return getFirstName()+" "+getLastName();
+    }
 
     /**
      *
@@ -44,6 +37,6 @@ public class Director extends Artist {
      */
     @Override
     public String toString() {
-        return getFirstName() + " " + getLastName() + "\n" + "Born: " + getBirthYear()  +" (age " + getAge() +" years)";
+        return  "Films directed by "+getFirstName() + " " + getLastName();
     }
 }

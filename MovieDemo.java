@@ -14,8 +14,7 @@ public class MovieDemo {
         frame.setSize(1000,1000);
         frame.setVisible(true);
 
-        //Restful API
-        //we should change System.in it will read from txt file
+
         Scanner scanner = new Scanner(System.in); // Scanner.out
         Scanner  inputStream = null;
 
