@@ -1,6 +1,4 @@
 import java.util.ArrayList;
-import java.util.Calendar;
-
 
 public abstract class Artist {
     private String firstName;
@@ -45,8 +43,9 @@ public abstract class Artist {
 
 
     void addMovie(Movie movie){
-        movies.add(new Movie(movie));
+        movies.add(movie);
     }
+    //TODO with copy constructor? or just movie
 
     //clone if needed
 }

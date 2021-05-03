@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-/***
+/**
  * added -instance variables Actor actor, year,duration,country, added their accessors and mutators
  * initialized in constructors, changed Movie.Movie.Genre - Movie.Genre
  * */
@@ -10,6 +10,8 @@ public class Movie {
     public enum Genre {
         ACTION,ADVENTURE,THRILLER,MARTIAL_ARTS, HORROR,MELODRAMA,COMEDY,DRAMA,HISTORICAL,ROMANCE,DOCUMENTARY,SCIENCE_FICTION, CRIME_FILM, WESTERN;
         public static Genre fromString(String s){
+            ArrayList<Genre> genres = new ArrayList<>();
+
             if (s.equals("comedy")) {
                 return COMEDY;
             } else if (s.equals("horror")){
@@ -53,6 +55,8 @@ public class Movie {
     private String country;
     private ArrayList<Actor> cast;
     private String about;
+    private String img_path;
+    //TODO Imageicon as an instance variable
 
     public Movie(){
 
@@ -188,7 +192,15 @@ public class Movie {
         this.about = about;
     }
 
+    public String getImg_path() {
+        return img_path;
+    }
 
+    public void setImg_path(String img_path) {
+        this.img_path = img_path;
+    }
+
+    //}
     //TODO second toString for lists <=> Image and name only
     /**
      *
@@ -202,13 +214,18 @@ public class Movie {
                 "Director: \t" + director.toStringInMovie() + "\n" +
                 "Genre: \t" + genre.toString().toLowerCase() + "\n" +
                 "Duration: \t" + duration + "\n" +
-                "Cast: \t" + getCast().toString().substring(getCast().toString().indexOf("[")+1, getCast().toString().indexOf("]")) + "\n" +
-                "\n \n About the film: "+ about;
+                "Cast: \t" +  getCast().toString().substring(getCast().toString().indexOf("[")+1, getCast().toString().indexOf("]")) + "\n" +
+                "About the film: "+ about;
                 //TODO directors and actors have to be clickable
     }
 
-    void addActor(Actor actor){
+    public String toStringinList(){
+        /*img*/
+        return "\n"+title+" ";
+    }
+
+/*    void addActor(Actor actor){
         if ()
         cast.add()
-    }
+    }*/
 }

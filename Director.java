@@ -1,11 +1,7 @@
 import java.util.ArrayList;
 
-/**
- * no changes
- * */
-
 public class Director extends Artist {
-    protected ArrayList<Director> directors;
+
     public Director(String firstName, String lastName, ArrayList<Movie> movies) {
         super(firstName, lastName, movies);
     }

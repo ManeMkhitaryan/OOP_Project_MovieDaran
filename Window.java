@@ -28,7 +28,7 @@ public class Window{
         label.setText("Click the Icon to continue");
 
 
-        button.setIcon(new ImageIcon("C:\\Users\\Acer\\Desktop\\Tets\\movieDaran_73.png"));
+        button.setIcon(new ImageIcon("C:\\Users\\Kamo\\Desktop\\AUA student\\Freshman Spring 2021\\OOP\\MovieDaran\\src\\MovieDaran photos\\logos\\cropped-logo-md.png"));
         button.setBounds(200,100,600,600);
         button.setBackground(new Color(100,123,15));
 //        panel.add(button);

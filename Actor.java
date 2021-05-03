@@ -5,19 +5,31 @@ import java.util.Calendar;
 import java.util.Scanner;
 
 /**class actor, with its instance variables, constructor initializing each variable, copy constructor, accessors mutators*/
-public class Actor extends Artist implements SavableInFile {
+public class Actor extends Artist {
 
     private String birthPlace;
     private int birthYear;
-    protected ArrayList<Actor> actors;
-    Actor actor;
-    //TODO private img type? getter setter, when we create an object it will get its image by path,
-                        // so we need also method which will initialze img in that path to our Actor
+    private String img_path;
 
-    public Actor(String firstName, String lastName, ArrayList<Movie> movies, int birthYear, String birthPlace) {
+
+//private ImageIcon image;
+    // BufferedImage myPicture = ImageIO.read(new File("path-to-file"));
+    //JLabel picLabel = new JLabel(new ImageIcon(myPicture));
+    //add(picLabel);
+    //ArrayList<Actor> actors = new ArrayList<>();
+
+
+
+    //TODO private img type? getter setter, when we create an object it will get its image by path,
+    // so we need also method which
+    // will initialze img in that path to our Actor
+    // or buttom instead that we can create contact to switch between directors actors and movies
+
+    public Actor(String firstName, String lastName, ArrayList<Movie> movies, int birthYear, String birthPlace/* ,ImageIcon img*/) {
         super(firstName, lastName, movies);
         this.birthPlace = birthPlace;
         this.birthYear = birthYear;
+        //this.image = img;
     }
 
     public Actor(String firstName, String lastName, ArrayList<Movie> movies){
@@ -25,10 +37,14 @@ public class Actor extends Artist implements SavableInFile {
         //birthPlace = "", birthyear = 0
     }
 
+    public Actor() {
+    }
 /*    @Override
     protected Object clone() throws CloneNotSupportedException {
         return super.clone();
     }*/
+
+
 
 /*    public Actor(Actor that){
         if(that != null){
@@ -53,6 +69,7 @@ public class Actor extends Artist implements SavableInFile {
         else
             return birthYear;
     }
+
     public void setBirthYear(int birthYear) {
         if(birthYear < 0)
             this.birthYear = 0;
@@ -60,32 +77,12 @@ public class Actor extends Artist implements SavableInFile {
             this.birthYear = birthYear;
 
     }
+    public String getImg_path() {
+        return img_path;
+    }
 
-    protected void readActorsFromScanner(Scanner scanner){
-/*        String FN = "";
-        String LN = "";
-        int year;
-        String bP = "";*/
-        ArrayList<Movie> actorSmovies = new ArrayList<>(); // TODO we should not create new Movie here
-        while (scanner.hasNextLine()){
-            while (scanner.nextLine().equals(""))
-/*            FN = scanner.next();
-            LN = scanner.next();
-            year = scanner.nextInt();
-            scanner.nextLine();
-            bP = scanner.nextLine();
-            Actor actor = new Actor(FN, LN, actorSmovies, year, bP);  */
-
-            setFirstName(scanner.next());
-            setLastName(scanner.next());
-            setBirthYear(scanner.nextInt());
-            scanner.nextLine();
-            setBirthPlace(scanner.nextLine());
-
-            Actor actor = new Actor(getFirstName(), getLastName(), getMovies(), getBirthYear(),getBirthPlace());
-            actors.add(actor);
-        }
-
+    public void setImg_path(String img_path) {
+        this.img_path = img_path;
     }
 
     private int Age(int birthYear) {
@@ -94,24 +91,18 @@ public class Actor extends Artist implements SavableInFile {
     }
 
     public String toStringNewActor(){
-        return "Film with "+ getFirstName() + " " + getLastName()+"\n";
+        return "Films with "+ getFirstName() + " " + getLastName()+"\n";
+    }
+    public String toStringForActor(){
+        return getFirstName() + " " + getLastName() +
+                "\n" + "Born: " + getBirthYear()  +
+                " (age " + Age(getBirthYear()) +" years)" +
+                " in " + birthPlace+"\nFilms with "+getFirstName() + " " + getLastName()+"\n";
     }
 
     @Override
     public String toString() {
-        return getFirstName() + " " + getLastName() + "\n" + "Born: " + getBirthYear()  +" (age " + Age(getBirthYear()) +" years)" +
-                " in " + birthPlace+"\n";
-    }
+        return getFirstName() + " " + getLastName();
 
-
-    @Override
-    public boolean readFromFile(String read) {
-        try {
-            Scanner scanner = new Scanner(new FileInputStream(read));
-            readActorsFromScanner(scanner);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        return false;
     }
 }
