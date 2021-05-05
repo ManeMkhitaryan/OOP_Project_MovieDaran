@@ -45,7 +45,4 @@ public abstract class Artist {
     void addMovie(Movie movie){
         movies.add(movie);
     }
-    //TODO with copy constructor? or just movie
-
-    //clone if needed
 }

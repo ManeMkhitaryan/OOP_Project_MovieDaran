@@ -86,7 +86,7 @@ public class Movie {
      *
      * @param otherMovie is the copy of Movie class by copy constructor copy its content
      */
-    public Movie(Movie otherMovie){
+/*    public Movie(Movie otherMovie){ //Dismiss this comments
         if (otherMovie != null) {
             this.title = otherMovie.title;
             this.year = otherMovie.year;
@@ -101,7 +101,7 @@ public class Movie {
             System.out.println("Fatal error");
             System.exit(0);
         }
-    }
+    }*/
 
     /**
      *
@@ -200,8 +200,7 @@ public class Movie {
         this.img_path = img_path;
     }
 
-    //}
-    //TODO second toString for lists <=> Image and name only
+
     /**
      *
      * @return String return String with this form (‘‘A Beautiful Mind’’, a drama from 2004 by Ron Howard)
@@ -216,16 +215,14 @@ public class Movie {
                 "Duration: \t" + duration + "\n" +
                 "Cast: \t" +  getCast().toString().substring(getCast().toString().indexOf("[")+1, getCast().toString().indexOf("]")) + "\n" +
                 "About the film: "+ about;
+/*
                 //TODO directors and actors have to be clickable
+*/
     }
 
     public String toStringinList(){
-        /*img*/
+
         return "\n"+title+" ";
     }
 
-/*    void addActor(Actor actor){
-        if ()
-        cast.add()
-    }*/
 }

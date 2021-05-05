@@ -1,18 +1,41 @@
+import javax.swing.*;
+import java.awt.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Scanner;
 
-public class Cinema_MovieDaran {
+public class Cinema_MovieDaran extends JFrame {
+        public static ArrayList<Actor> actors = new ArrayList<>();
+        public static ArrayList<Movie> movies = new ArrayList<>();
+        public static ArrayList<Director> directors = new ArrayList<>();
+/*    public ArrayList<Actor> getActors() {
+        return actors;
+    }
 
+    public void setActors(Actor actor) {
+        this.actors.add(actor);
+    }
+
+    public ArrayList<Movie> getMovies() {
+        return movies;
+    }
+
+    public void setMovies(ArrayList<Movie> movies) {
+        this.movies = movies;
+    }
+
+    public ArrayList<Director> getDirectors() {
+        return directors;
+    }
+
+    public void setDirectors(ArrayList<Director> directors) {
+        this.directors = directors;
+    }*/
     public static void main(String[] args) {
-
         Scanner  inputStream = null;
 
-        ArrayList<Actor> actors = new ArrayList<>();
-        ArrayList<Movie> movies = new ArrayList<>();
-        ArrayList<Director> directors = new ArrayList<>();
 
         try{
             inputStream = new Scanner(new FileInputStream
@@ -36,6 +59,7 @@ public class Cinema_MovieDaran {
 
                 Actor actor = new Actor(firstName, lastName, actorSmovies, year, birthPlace);
                 actor.setImg_path(img_path);
+
                 actors.add(actor);
             }
         }
@@ -111,6 +135,7 @@ public class Cinema_MovieDaran {
             }
         }
 
+        // Here we created newMovie array which has same movies as movies array, the only difference is that newmovies shows recent movies first
         Movie temp;
         ArrayList<Movie> newMovies = movies;
 
@@ -125,49 +150,55 @@ public class Cinema_MovieDaran {
         }
 
 
-        System.out.println(searchMovieByTitle("The GodFather", movies));
+        System.out.println(searchMovieByTitle("Maleficent", movies)); //Search check
 
 
 
-
-        //System.out.println(actors.size());
+//1. Checking actor's data. Note there are two kinds of actors, which are in txt file and which were added from movies
 
 /*        for (Actor actor: actors){
             if (actor.getBirthYear() == 0) {
                 System.out.println(actor.toStringNewActor());
                 for (Movie movie: actor.getMovies()){
-                    System.out.println(movie.toStringinList());
+                    System.out.println(movie.toStringinList()+"\n");
                 }
             }
+
             else{
+                System.out.println(actor.getImg_path()+"\n");
                 System.out.println(actor.toStringForActor());
                 for (Movie movie: actor.getMovies()){
-                    System.out.println(movie.toStringinList());
+                    System.out.println(movie.toStringinList()+"\n");
                 }
-                System.out.println(actor.getImg_path());
+
             }
 
         }*/
 
+
+//2. Checking data of movies. Movies will be displayed in 2 ways only with their image and title. Or with their whole information
+
+        //2.1 Movie with full desctiption
 /*        for (Movie movie: movies){
-            System.out.println(movie.toString()+"\n");
             System.out.println(movie.getImg_path());
+            System.out.println(movie.toString()+"\n");
         }*/
 
-        //int year= Calendar.getInstance().get(Calendar.YEAR);
-
-
+        //2.2 Movie in the list
 /*        for (Movie movie: movies){
-            System.out.println(movie.toString()+"\n");
-            System.out.println(movie.getImg_path());
+            System.out.println("C:\\Users\\Kamo\\Desktop\\AUA student\\Freshman Spring 2021\\OOP\\MovieDaran\\src\\"+movie.getImg_path());
+            System.out.println(movie.getTitle()+"\n");
         }*/
 
+        //2.3 Checking NewMovies
 /*        for (Movie movie: newMovies){
             System.out.println(movie.toString()+"\n");
         }*/
 
 
+//3 Checking data of Directors, again there are 2 ways of displaying directors one inside the Movie then the other which will display director's name and his movies
 
+        //3.1 Displaying directors with their movies
 /*        for (Director director: directors){
             System.out.println(director.toString());
             for (Movie movie: director.getMovies()){
@@ -175,17 +206,63 @@ public class Cinema_MovieDaran {
             }
 
         }*/
+        //3.2 Directors in the movies.. you already saw in movies
 
-
+/*
+    new Cinema_MovieDaran(); //Dismiss this comments
+*/
     }
 
-    public static Movie searchMovieByTitle(String title, ArrayList<Movie> movies){
-        for (Movie movie: movies){
-            if (title.equals(movie.getTitle())){
-                return movie;
-            }else {
-                System.out.println("Movie is not found");
+/*    public Cinema_MovieDaran(){ //Dismiss this comments
+        //initComponents();
+        GridBagConstraints gbc = new GridBagConstraints(); //The GridBagConstraints class specifies constraints
+                                                            // for components that are laid out using the GridBagLayout class.
+        gbc.insets = new Insets(20, 20,20,20); //This field specifies the external padding of
+                                                    // the component, the minimum amount of space between the component and the edges of its display area.
+
+        int x = 0; //columns
+        int y = 0;
+        for (int i = 0; i < movies.size(); i++){
+            gbc.gridx = x;
+            gbc.gridy = y;
+            Cinema_MovieDaran.add(movies.get(i), gbc);
+            x++;
+            if (x == 3){
+                x=0;
+                y++;
             }
+        }
+
+
+    }*/
+
+
+/*    Cinema_MovieDaran(){ //Dismiss this comments
+        JList<Movie> displayMovies = new JList<>(movies.toArray(new Movie[0]));
+        JScrollPane scrollPane = new JScrollPane(displayMovies);
+
+        getContentPane().add(scrollPane);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        pack();
+        setVisible(true);
+    }*/
+
+// Search Option available in console
+    public static Movie searchMovieByTitle(String title, ArrayList<Movie> movies) {
+        while (true) {
+            String prompt = "";
+            for (Movie movie : movies) {
+                if (title.equalsIgnoreCase(movie.getTitle())) {
+                    prompt = "movie_found";
+                    return movie;
+                }
+
+            }
+            if (!prompt.equals("movie_found")) {
+                System.out.println("Movie is not found");
+                break;
+            }
+        break;
         }
         return null;
     }

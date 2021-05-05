@@ -10,17 +10,6 @@ public class Director extends Artist {
     super();
     }
 
-/*    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }*/
-
-
-//    public Director(Director that) {
-//        if (that != null) {
-//            this.firstname = that.firstname;
-//            this.lastname = that.lastname;
-//        }
-//    }
 
     public String toStringInMovie(){
         return getFirstName()+" "+getLastName();
